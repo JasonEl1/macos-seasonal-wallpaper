@@ -19,7 +19,9 @@ if [[ $"folder_count" -gt 7 ]]; then
     read continue
 
     if [[ $continue == "y" ]]; then
-        sudo cp build/wallpaper-${sys_type}-${sys_arch} /usr/local/bin/wallpaper
+        curl -o wallpaper -s https://api.github.com/repos/JasonEl1/macos-seasonal-wallpaper/releases/latest | grep '"browser_download_url":' | grep "wallpaper-"$OS"-"$ARCH | grep -vE '(\.pem|\.sig)' | grep -o 'https://[^"]*'
+        chmod +x wallpaper-${sys_type}-${sys_arch}
+        sudo cp wallpaper-${sys_type}-${sys_arch} /usr/local/bin/wallpaper
         crontab -l | grep -v "wallpaper" | crontab -
         (crontab -l; echo "0 * * * * /usr/local/bin/wallpaper") | crontab -
         echo "Copied executable to wallpaper folder and added cron entry."

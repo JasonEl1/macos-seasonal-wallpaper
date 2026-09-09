@@ -154,7 +154,7 @@ func main() {
 	OS_TYPE := runtime.GOOS
 
 	current_time := time.Now()
-	tod := get_day_night(current_time)
+	tod := get_day_night(current_time) // tod is Time Of Day
 
 	wallpaper_path, _ := wallpaper.Get()
 
@@ -184,7 +184,7 @@ func main() {
 	var changed bool = false
 
 	if (current_season != get_season(int(current_time.Month()), current_time.Day())) || (current_tod != tod) { //if active wallpaper does not match current season or tod
-		fmt.Println("Found mismatch: current season is " + get_season(int(current_time.Month()), current_time.Day()) + " and current tod is " + tod + " but Active folder is " + current_season + "-" + current_tod)
+		fmt.Println("Found mismatch: current season is " + get_season(int(current_time.Month()), current_time.Day()) + " and current TOD is " + tod + " but Active folder is " + current_season + "-" + current_tod)
 
 		entries, err := os.ReadDir(wallpapers_folder)
 		if err != nil {
