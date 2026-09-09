@@ -19,7 +19,7 @@ if [[ $"folder_count" -gt 7 ]]; then
     read continue
 
     if [[ $continue == "y" ]]; then
-        curl -o wallpaper -s https://api.github.com/repos/JasonEl1/macos-seasonal-wallpaper/releases/latest | grep '"browser_download_url":' | grep "wallpaper-"$OS"-"$ARCH | grep -vE '(\.pem|\.sig)' | grep -o 'https://[^"]*'
+        curl -o build/wallpaper-${sys_type}-${sys_arch} -s https://api.github.com/repos/JasonEl1/macos-seasonal-wallpaper/releases/latest | grep '"browser_download_url":' | grep "wallpaper-"$OS"-"$ARCH | grep -vE '(\.pem|\.sig)' | grep -o 'https://[^"]*'
         chmod +x wallpaper-${sys_type}-${sys_arch}
         sudo cp wallpaper-${sys_type}-${sys_arch} /usr/local/bin/wallpaper
         crontab -l | grep -v "wallpaper" | crontab -

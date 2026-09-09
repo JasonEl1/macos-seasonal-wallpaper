@@ -39,6 +39,10 @@ You can also enter `wallpaper` in the terminal to update the wallpaper folder ma
 > [!TIP]
 > The date intervals for the seasons are stored in `seasons.json` in your wallpaper directory after running `install.sh`. These dates can be edited to adjust the season transitions for the program.
 
+### Building manually
+
+Requires Go to be installed. Run `build/build.sh` and then `install.sh`.
+
 ### Uninstallation
 
 To uninstall the program, run `./uninstall.sh` from the original install folder. Or enter this in the terminal:
